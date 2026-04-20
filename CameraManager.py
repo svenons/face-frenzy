@@ -4,8 +4,8 @@ class CameraManager:
     def __init__(self):
         self.cap = cv2.VideoCapture(0, cv2.CAP_V4L2)
         if not self.cap.isOpened():
-            print("Cannot open camera")
-            exit()
+            self.cap.release()
+            raise RuntimeError("Cannot open camera")
 
         # lower resolution for better speed
         self.cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)

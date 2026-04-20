@@ -1,0 +1,5 @@
+# OpenCV is intentionally not listed here for PYNQ-Z2.
+# Install it with: sudo apt install -y python3-opencv
+numpy
+flask
+bitstring

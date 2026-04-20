@@ -1,0 +1,21 @@
+[Unit]
+Description=Face Frenzy (PYNQ-Z2 FPGA face-detection game)
+After=network-online.target local-fs.target
+Wants=network-online.target
+StartLimitBurst=10
+StartLimitIntervalSec=600
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/home/xilinx/face-frenzy
+Environment=HOME=/root
+ExecStart=/bin/bash -lc 'source /etc/profile.d/pynq_venv.sh && source /etc/profile.d/xrt_setup.sh && exec python3 /home/xilinx/face-frenzy/main.py'
+Restart=on-failure
+RestartSec=5s
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
